@@ -34,17 +34,3 @@ int main(int argc, char *argv[], char *en[])
 	printf("\n");
 	return (0);
 }
-/*void exeP(char *val)
-{
-	int i;
-	if (fork() == 0)
-		i = execve(val," -","l");
-		if (i < 0)
-		{
-			printf("not foun");
-			exit(1);
-		}
-		else {
-			wait(NULL);
-		}
-}*/
