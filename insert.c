@@ -1,4 +1,4 @@
-#include main.h"
+#include "main.h"
 
 void insert_path_str_to_search(char *path_str) 
 {
