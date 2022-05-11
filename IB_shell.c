@@ -7,11 +7,12 @@
 #include <unistd.h>                                                        
 #include <signal.h>                                                        
 #include <string.h>                                                        
+#include <sys/wait.h>                                                      
 char c = '\0';                                                             
                                                                            
                                                                            
                                                                            
-int main()                                                                 
+int main(int argc, char *argv[], char *var[])                              
 {                                                                          
         char c;                                                            
         char *val = (char *)malloc(sizeof(char) * 100);                    
@@ -21,7 +22,15 @@ int main()
                 switch(c) {                                                
                         case '\n':  if(val[0] == '\0') {                   
                                            printf("IB_shell  ");           
-                                   } else {;};                             
+                                   } else {                                
+                                           if (fork() == 0)                
+                                           {                               
+                                                   execve(val,argv,var);   
+                                        exit(1);                           
+                                           }else                           
+                                                   wait(NULL);             
+                                           };                              
+                                    printf("IB_shell ");                   
                                    break;                                  
                         default: strncat(val, &c, 1);                      
                                  break;                                    
@@ -29,4 +38,4 @@ int main()
         }                                                                  
         printf("\n");                                                      
         return 0;                                                          
-}    
+}
