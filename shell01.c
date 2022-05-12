@@ -6,7 +6,7 @@
  * @argv: input
  * @ptr: input
  */
-int main (int argc, char *argv[], char *ptr[])
+int main(int argc, char *argv[], char *ptr[])
 {
   char c;
   char *tmp = (char *) malloc (sizeof (char) * 100);
