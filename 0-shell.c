@@ -7,7 +7,7 @@
  * Return: 0;
  */
 
-int main()
+int main(void)
 {
 	char *buffer;
 	size_t buflen = 32;
@@ -19,7 +19,7 @@ int main()
 		perror("impossible d'allouer");
 	}
 	for (int i = 0; i < 5; i++)
-	{	
+	{
 		printf("$ ");
 		valeur = getline(&buffer, &buflen, stdin);
 		printf("%zu \n", valeur);
