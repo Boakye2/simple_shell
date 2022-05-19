@@ -36,8 +36,12 @@ int main(int argc, char *argv[], char *ptr[])
 }
 
 /**
- * print - print value.
+ * print_all - print value.
+ * @a: int value initstate
  * @c: char variable
+ * @argv: pointer in char input value.
+ * @ptr: pointer in char input value
+ * @tmp: pointer in char input value
  *
  * Return: 0.
  */
