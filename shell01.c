@@ -17,7 +17,6 @@ int main(int argc, char *argv[], char *ptr[])
 	argc = 0;
 	if (fork() == 0)
 	{
-		execve("/usr/bin/clear", argv, ptr);
 		exit(1);
 	}
 	else
