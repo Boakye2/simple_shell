@@ -17,7 +17,7 @@ int main(void)
 	}
 	printf("#cisfun$");
 	getline(&buffer, &buflen, stdin);
-	while (*buffer != EOF)
+	while (*buffer)
 	{
 		if (cmd[0] == *buffer)
 		{
