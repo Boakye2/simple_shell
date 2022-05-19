@@ -12,4 +12,5 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+int print_all(int a, char c, char *argv[], char *ptr[], char *tmp);
 #endif

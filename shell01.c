@@ -13,9 +13,8 @@ int main(int argc, char *argv[], char *ptr[])
 {
 	char c;
 	char *tmp = (char *)malloc(sizeof(char) * 100);
+
 	argc = 0;
-
-
 	if (fork() == 0)
 	{
 		execve("/usr/bin/clear", argv, ptr);
@@ -29,42 +28,55 @@ int main(int argc, char *argv[], char *ptr[])
 	while (c != EOF)
 	{
 		c = getchar();
-		switch (c)
-		{
-			case '\n':
+		print_all(0, c, argv, ptr, tmp);
+	}
+	printf("\n");
+	free(tmp);
+	return (argc);
+}
+
+/**
+ * print - print value.
+ * @c: char variable
+ *
+ * Return: 0.
+ */
+
+int print_all(int a, char c, char *argv[], char *ptr[], char *tmp)
+{
+	switch (c)
+	{
+		case '\n':
+			{
+				if (tmp[0] == '\0')
 				{
-					if (tmp[0] == '\0')
+					printf("#cisfun$ ");
+				}
+				else
+				{
+					int i;
+
+					if (fork() == 0)
 					{
-						printf("#cisfun$ ");
+						i = execve(tmp, argv, ptr);
+					if (i < 0)
+					{
+					printf("./shell: No such file or directory\n");
+					exit(1);
+					}
 					}
 					else
 					{
-						int i;
-
-						if (fork() == 0)
-						{
-							i = execve(tmp, argv, ptr);
-							if (i < 0)
-							{
-								printf("./shell: No such file or directory\n");
-								exit(1);
-							}
-						}
-						else
-						{
-							wait(NULL);
-						}
+						wait(NULL);
 					}
-					printf("#cisfun$ ");
 				}
-				bzero(tmp, 100);
-				break;
-			default:
-				strncat(tmp, &c, 1);
-				 break;
-		}
+				printf("#cisfun$ ");
+			}
+			bzero(tmp, 100);
+			break;
+		default:
+			strncat(tmp, &c, 1);
+			break;
 	}
-	free(tmp);
-	printf("\n");
-	return (argc);
+	return (0);
 }
