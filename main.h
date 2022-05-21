@@ -24,7 +24,7 @@ void get_path_string(char **tmp_envp, char *bin_path);
 void insert_path_str_to_search(char *path_str);
 int attach_path(char *cmd);
 void call_execve(char *cmd);
-void free_argv();
+void free_argv(void);
 
 
 #endif
