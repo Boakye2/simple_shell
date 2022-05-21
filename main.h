@@ -25,6 +25,7 @@ void insert_path_str_to_search(char *path_str);
 int attach_path(char *cmd);
 void call_execve(char *cmd);
 void free_argv(void);
+int print_all(int a, char c, char *argv[], char *ptr[], char *tmp, char *cmd)
 
 
 #endif
