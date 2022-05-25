@@ -8,6 +8,7 @@
 int main(void)
 {
 	size_t buflen = 32;
+	ssize_t len = 0;
 	char *buffer, *argv[] = {"/bin/ls", NULL}, cmd[] = "/bin/ls";
 
 	buffer = (char *)malloc(buflen * sizeof(char));
@@ -15,11 +16,11 @@ int main(void)
 	{
 		perror("impossible d'allouer");
 	}
-	printf("#cisfun$");
-	getline(&buffer, &buflen, stdin);
-	while (*buffer)
+	while (len != EOF)
 	{
-		if (cmd[0] == *buffer)
+		printf("#cisfun$");
+		len = getline(&buffer, &buflen, stdin);
+		if (cmd == buffer)
 		{
 			int i;
 
@@ -35,15 +36,11 @@ int main(void)
 			{
 				wait(NULL);
 			}
-			printf("#cisfun$");
-			getline(&buffer, &buflen, stdin);
 		}
 		else
 		{
 			printf("./shell: No such file or directory\n");
 		}
-	printf("#cisfun$");
-	getline(&buffer, &buflen, stdin);
 	}
 	return (0);
 }
