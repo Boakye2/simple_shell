@@ -66,6 +66,7 @@ int print_all(int a, char c, char *argv[], char *ptr[], char *tmp, char *cmd)
 	switch (c)
 	{
 		case '\n':
+			{
 				if (tmp[0] == '\0')
 					printf("#cisfun$ ");
 				else
@@ -76,7 +77,9 @@ int print_all(int a, char c, char *argv[], char *ptr[], char *tmp, char *cmd)
 					if (index(cmd, '/') == NULL)
 					{
 					if (attach_path(cmd) == 0)
+					{
 						call_execve(cmd);
+					}
 					else
 						printf("./shell: No such file or directory\n");
 					}
@@ -95,6 +98,7 @@ int print_all(int a, char c, char *argv[], char *ptr[], char *tmp, char *cmd)
 				free_argv(void);
 				printf("#cisfun$ ");
 				bzero(cmd, 100);
+			}
 			bzero(tmp, 100);
 			break;
 		default:
