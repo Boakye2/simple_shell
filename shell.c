@@ -20,7 +20,7 @@ int main(void)
 	{
 		printf("#cisfun$");
 		len = getline(&buffer, &buflen, stdin);
-		if (cmd == buffer)
+		if (cmd[0] == *buffer)
 		{
 			int i;
 
